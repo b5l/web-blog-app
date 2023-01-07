@@ -17,11 +17,11 @@ type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 export const LoginPage = ({ navigation }: Props) => {
   return (
     <>
-      <Box style={styles.container}>
+      <Box style={loginStyle.container}>
         <Text fontSize="4xl" style={loginStyle.loginText}>
           Login
         </Text>
-        <Box style={loginStyle.loginContainer} m="15">
+        <Box style={loginStyle.inputContainer} m="15">
           <FormControl isRequired>
             <Stack mx="10" mb="2">
               <FormControl.Label>Username</FormControl.Label>

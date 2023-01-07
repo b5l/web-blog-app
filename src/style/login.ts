@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const loginStyle = StyleSheet.create({
-  loginContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: "#B65EFF",
+    justifyContent: "center",
+  },
+  inputContainer: {
     flex: 0.3,
     alignItems: "center",
     justifyContent: "space-between",
