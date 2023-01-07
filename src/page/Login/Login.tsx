@@ -9,7 +9,6 @@ import {
   Spacer,
 } from "native-base";
 import { RootStackParamList } from "../../components/navigation/navigationParams";
-import { styles } from "../../style/global";
 import { loginStyle } from "../../style/login";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
