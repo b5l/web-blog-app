@@ -7,6 +7,7 @@ import {
   Text,
   Spacer,
   Input,
+  WarningOutlineIcon,
 } from "native-base";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,7 +63,7 @@ export const LoginPage = ({ navigation }: Props) => {
                 }
               />
             </Stack>
-            <FormControl.ErrorMessage>
+            <FormControl.ErrorMessage alignItems="center">
               Login Failed! Try again!
             </FormControl.ErrorMessage>
           </FormControl>
