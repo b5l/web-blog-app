@@ -1,9 +1,11 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Box, FlatList, Pressable, Text } from "native-base";
+import { Box, Button, Fab, FlatList, Pressable, Text } from "native-base";
 import { Heading } from "native-base";
 import { useEffect, useState } from "react";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStackParamList } from "../../components/navigation/navigationParams";
+import { style } from "../../style/global";
 import { blogPostsType } from "../../types/types";
 import { getBlogPosts } from "./store/selectors";
 import { fetchBlogPostsAction } from "./store/slice";
@@ -27,7 +29,7 @@ export const BlogPosts = ({ navigation }: Props) => {
   }, [listData]);
 
   return (
-    <Box style={{ backgroundColor: "lightgray" }}>
+    <Box style={style.pageContainer}>
       <FlatList
         data={data}
         renderItem={({ item }) => (
@@ -44,12 +46,19 @@ export const BlogPosts = ({ navigation }: Props) => {
           >
             <Box>
               <Heading>{item.title}</Heading>
-              <Text>{item.shortDescription}</Text>
+              <Text textAlign={"justify"}>{item.shortDescription}</Text>
             </Box>
           </Pressable>
         )}
         keyExtractor={(item) => item.id.toString()}
       />
+      <Button
+        style={style.button}
+        onPress={() => navigation.navigate("New")}
+        size={"lg"}
+      >
+        <MaterialCommunityIcons name="plus" color="white" size={25} />
+      </Button>
     </Box>
   );
 };
