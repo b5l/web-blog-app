@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Box, Button, Fab, Heading, Icon, Text } from "native-base";
-import { space } from "native-base/lib/typescript/theme/styled-system";
+import { Box, Button, Heading, Text } from "native-base";
 import { useEffect, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,8 +13,10 @@ type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
 export const BlogDetails = ({ route, navigation }: Props) => {
   const { id } = route.params;
+
   const dispatch = useDispatch();
   const detailsData = useSelector(getBlogDetails);
+
   useEffect(() => {
     dispatch(fetchBlogDetailsAction({ id: id }));
   }, []);
