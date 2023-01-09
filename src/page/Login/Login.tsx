@@ -28,8 +28,8 @@ export const LoginPage = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (auth.isAuth) {
-      navigation.navigate("Posts");
       setErrorMessage(false);
+      navigation.navigate("Posts");
     }
   }, [auth]);
 
