@@ -21,7 +21,7 @@ export const BlogDetails = ({ route, navigation }: Props) => {
     dispatch(fetchBlogDetailsAction({ id: id }));
   }, []);
 
-  const [data, setDetailsData] = useState<blogDetailsType | null>(null);
+  const [data, setDetailsData] = useState<blogDetailsType>();
 
   useEffect(() => {
     if (detailsData) {
@@ -45,7 +45,7 @@ export const BlogDetails = ({ route, navigation }: Props) => {
       <Button
         style={style.button}
         size={"lg"}
-        onPress={() => navigation.navigate("Edit", { id: id })}
+        onPress={() => navigation.navigate("Edit", { data: data })}
       >
         <MaterialCommunityIcons name="pencil" color="white" size={25} />
       </Button>

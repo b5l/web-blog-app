@@ -11,18 +11,15 @@ import { RootStackParamList } from "../navigation/navigationParams";
 type Props = NativeStackScreenProps<RootStackParamList, "New" | "Edit">;
 
 export const BlogPostForm = ({ navigation, route }: Props) => {
-  const id = route.params?.id;
+  const detailsData = route.params?.data;
 
   const dispatch = useDispatch();
-  const detailsData = useSelector(getBlogDetails);
-  console.log(detailsData);
   const [details, setDetailsData] = useState<blogDetailsType | null>(null);
   const [formData, setData] = useState({});
 
   useEffect(() => {
-    // dispatch(fetchBlogDetailsAction({ id: id }));
     if (detailsData) {
-      setDetailsData(detailsData.data);
+      setDetailsData(detailsData);
     }
   }, [detailsData]);
 

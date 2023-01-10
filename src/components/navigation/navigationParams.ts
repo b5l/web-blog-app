@@ -1,7 +1,9 @@
+import { blogDetailsType } from "../../types/types";
+
 export type RootStackParamList = {
   Login: undefined;
   Posts: undefined;
   Details: { id: number };
   New: undefined;
-  Edit: { id: number };
+  Edit: { data: blogDetailsType | undefined };
 };
