@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Box, Button, Fab, Heading, Icon, Text } from "native-base";
-import { space } from "native-base/lib/typescript/theme/styled-system";
+import { Box, Button, Heading, Text } from "native-base";
 import { useEffect, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,13 +13,15 @@ type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
 export const BlogDetails = ({ route, navigation }: Props) => {
   const { id } = route.params;
+
   const dispatch = useDispatch();
   const detailsData = useSelector(getBlogDetails);
+
   useEffect(() => {
     dispatch(fetchBlogDetailsAction({ id: id }));
   }, []);
 
-  const [data, setDetailsData] = useState<blogDetailsType | null>(null);
+  const [data, setDetailsData] = useState<blogDetailsType>();
 
   useEffect(() => {
     if (detailsData) {
@@ -35,16 +36,18 @@ export const BlogDetails = ({ route, navigation }: Props) => {
           {data?.title}
         </Heading>
         <Heading size="sm" marginBottom="5" textAlign={"justify"}>
-          {data?.shortDescription}
+          {data?.type}
         </Heading>
         <Text fontSize="md" textAlign={"justify"}>
-          {data?.longDescription}
+          {data?.description}
         </Text>
       </Box>
       <Button
         style={style.button}
         size={"lg"}
-        onPress={() => navigation.navigate("Edit", { id: id })}
+        onPress={() => {
+          navigation.navigate("Edit", { edit: true, type: data?.type });
+        }}
       >
         <MaterialCommunityIcons name="pencil" color="white" size={25} />
       </Button>

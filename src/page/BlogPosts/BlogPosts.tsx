@@ -35,18 +35,14 @@ export const BlogPosts = ({ navigation }: Props) => {
         renderItem={({ item }) => (
           <Pressable
             onPress={() => navigation.navigate("Details", { id: item.id })}
-            rounded="8"
-            overflow="hidden"
-            borderWidth="1"
-            borderColor="#B65EFF"
-            maxW="100%"
-            bg="coolGray.100"
+            style={style.boxContainer}
+            borderRadius={8}
             p="5"
             m="5"
           >
             <Box>
               <Heading>{item.title}</Heading>
-              <Text textAlign={"justify"}>{item.shortDescription}</Text>
+              <Text textAlign={"justify"}>{item.type}</Text>
             </Box>
           </Pressable>
         )}
@@ -54,7 +50,7 @@ export const BlogPosts = ({ navigation }: Props) => {
       />
       <Button
         style={style.button}
-        onPress={() => navigation.navigate("New")}
+        onPress={() => navigation.navigate("Create")}
         size={"lg"}
       >
         <MaterialCommunityIcons name="plus" color="white" size={25} />

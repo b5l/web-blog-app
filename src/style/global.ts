@@ -12,4 +12,11 @@ export const style = StyleSheet.create({
     margin: 30,
     borderRadius: 50,
   },
+  boxContainer: {
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "#B65EFF",
+    maxW: "100%",
+    backgroundColor: "white",
+  },
 });

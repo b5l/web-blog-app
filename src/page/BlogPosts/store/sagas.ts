@@ -11,16 +11,12 @@ interface IExtendedAction extends Action {
 
 export function* fetchBlogPostsSaga(action: IExtendedAction): SagaIterator {
   const {} = action.payload;
-  try {
-    yield put(setBlogPostsState({ isFetching: false }));
 
-    const response = yield call(fetchBlogPostsApiCall);
+  yield put(setBlogPostsState({ isFetching: false }));
 
-    yield put(setBlogPostsState(response.data));
-  } catch (error) {
-    yield put(setBlogPostsState({ isFetching: false }));
-  } finally {
-  }
+  const response = yield call(fetchBlogPostsApiCall);
+
+  yield put(setBlogPostsState(response.data));
 }
 
 export function* watchBlogPostsSaga() {

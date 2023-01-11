@@ -7,7 +7,6 @@ import {
   Text,
   Spacer,
   Input,
-  WarningOutlineIcon,
 } from "native-base";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,8 +27,10 @@ export const LoginPage = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (auth.isAuth) {
-      setErrorMessage(false);
       navigation.navigate("Posts");
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 500);
     }
   }, [auth]);
 
@@ -74,7 +75,9 @@ export const LoginPage = ({ navigation }: Props) => {
             style={loginStyle.loginButton}
             onPress={() => {
               dispatch(fetchLoginAction(formData));
-              setErrorMessage(true);
+              setTimeout(() => {
+                setErrorMessage(true);
+              }, 400);
             }}
           >
             Login

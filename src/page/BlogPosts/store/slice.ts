@@ -21,7 +21,9 @@ const blogPostsSlice = createSlice({
     setBlogPostsState: (state, action) => {
       state.blogPosts = { ...state.blogPosts, ...action.payload };
     },
-    fetchBlogPostsAction: (state, action) => {},
+    fetchBlogPostsAction: (state, action) => {
+      state.blogPosts = { ...state.blogPosts, ...action.payload };
+    },
   },
 });
 
