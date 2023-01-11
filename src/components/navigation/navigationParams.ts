@@ -4,6 +4,6 @@ export type RootStackParamList = {
   Login: undefined;
   Posts: undefined;
   Details: { id: number };
-  New: undefined;
+  Create: undefined;
   Edit: { data: blogDetailsType | undefined };
 };

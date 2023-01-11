@@ -50,7 +50,7 @@ export const BlogPosts = ({ navigation }: Props) => {
       />
       <Button
         style={style.button}
-        onPress={() => navigation.navigate("New")}
+        onPress={() => navigation.navigate("Create")}
         size={"lg"}
       >
         <MaterialCommunityIcons name="plus" color="white" size={25} />

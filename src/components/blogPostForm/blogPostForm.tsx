@@ -1,14 +1,16 @@
-import { RouteProp } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Box, Button, Input, Text, TextArea } from "native-base";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getBlogDetails } from "../../page/BlogDetails/store/selectors";
+import { useDispatch } from "react-redux";
+import { fetchBlogEditAction } from "../../page/BlogEdit/store/slice";
+import { fetchBlogCreateAction } from "../../page/BlogCreate/store/slice";
+import { fetchBlogPostsAction } from "../../page/BlogPosts/store/slice";
 import { style } from "../../style/global";
 import { blogDetailsType } from "../../types/types";
 import { RootStackParamList } from "../navigation/navigationParams";
+import { CommonActions } from "@react-navigation/native";
 
-type Props = NativeStackScreenProps<RootStackParamList, "New" | "Edit">;
+type Props = NativeStackScreenProps<RootStackParamList, "Create" | "Edit">;
 
 export const BlogPostForm = ({ navigation, route }: Props) => {
   const detailsData = route.params?.data;
@@ -20,6 +22,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
   useEffect(() => {
     if (detailsData) {
       setDetailsData(detailsData);
+      setData({ ...formData, id: detailsData.id });
     }
   }, [detailsData]);
 
@@ -59,12 +62,14 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
       ></TextArea>
       <Button
         onPress={() => {
-          navigation.navigate("Posts");
           if (details) {
-            // put
+            dispatch(fetchBlogEditAction(formData));
           } else {
-            //post
+            dispatch(fetchBlogCreateAction(formData));
           }
+
+          navigation.navigate("Posts");
+          dispatch(fetchBlogPostsAction({}));
         }}
       >
         Save

@@ -5,7 +5,7 @@ import BlogPosts from "../../page/BlogPosts/BlogPosts";
 import LoginPage from "../../page/Login/Login";
 import { RootStackParamList } from "./navigationParams";
 import BlogEdit from "../../page/BlogEdit/BlogEdit";
-import BlogNew from "../../page/BlogNew/BlogNew";
+import BlogCreate from "../../page/BlogCreate/BlogCreate";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -43,10 +43,10 @@ export const Navigation = () => {
           }}
         ></Stack.Screen>
         <Stack.Screen
-          name="New"
-          component={BlogNew}
+          name="Create"
+          component={BlogCreate}
           options={{
-            title: "Blog new",
+            title: "Blog create",
             headerStyle: {
               backgroundColor: "#B65EFF",
             },

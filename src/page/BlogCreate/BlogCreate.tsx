@@ -4,9 +4,9 @@ import { BlogPostForm } from "../../components/blogPostForm/blogPostForm";
 import { RootStackParamList } from "../../components/navigation/navigationParams";
 import { style } from "../../style/global";
 
-type Props = NativeStackScreenProps<RootStackParamList, "New">;
+type Props = NativeStackScreenProps<RootStackParamList, "Create">;
 
-export const BlogEdit = ({ navigation, route }: Props) => {
+export const BlogCreate = ({ navigation, route }: Props) => {
   return (
     <Box style={style.pageContainer}>
       <BlogPostForm navigation={navigation} route={route} />
@@ -14,4 +14,4 @@ export const BlogEdit = ({ navigation, route }: Props) => {
   );
 };
 
-export default BlogEdit;
+export default BlogCreate;
