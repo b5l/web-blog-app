@@ -42,7 +42,7 @@ export const BlogPosts = ({ navigation }: Props) => {
           >
             <Box>
               <Heading>{item.title}</Heading>
-              <Text textAlign={"justify"}>{item.shortDescription}</Text>
+              <Text textAlign={"justify"}>{item.type}</Text>
             </Box>
           </Pressable>
         )}

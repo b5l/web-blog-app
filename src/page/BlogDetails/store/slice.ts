@@ -5,8 +5,8 @@ interface ISliceState {
     data: {
       id: number;
       title: string;
-      shortDescription: string;
-      longDescription: string;
+      type: string;
+      description: string;
     };
     isFetching: boolean;
   };
@@ -17,8 +17,8 @@ export const initialState: ISliceState = {
     data: {
       id: 0,
       title: "",
-      shortDescription: "",
-      longDescription: "",
+      type: "",
+      description: "",
     },
     isFetching: false,
   },

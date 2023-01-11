@@ -4,8 +4,8 @@ interface ISliceState {
   blogCreate: {
     data: {
       title: string;
-      shortDescription: string;
-      longDescription: string;
+      type: string;
+      description: string;
     };
   };
 }
@@ -14,8 +14,8 @@ export const initialState: ISliceState = {
   blogCreate: {
     data: {
       title: "",
-      shortDescription: "",
-      longDescription: "",
+      type: "",
+      description: "",
     },
   },
 };

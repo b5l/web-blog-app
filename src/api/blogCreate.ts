@@ -3,12 +3,12 @@ import { FETCH_BLOG_CREATE_URL } from "../utils/api-config";
 
 export const fetchBlogCreateApiCall = (payload: {
   title: string;
-  shortDescription: string;
-  longDescription: string;
+  type: string;
+  description: string;
 }) => {
-  const { title, shortDescription, longDescription } = payload;
+  const { title, type, description } = payload;
   return axios
-    .post(FETCH_BLOG_CREATE_URL(), { title, shortDescription, longDescription })
+    .post(FETCH_BLOG_CREATE_URL(), { title, type, description })
     .then()
     .catch((error) => {
       return error;

@@ -8,19 +8,19 @@ interface IExtendedAction extends Action {
   type: string;
   payload: Partial<{
     title: string;
-    shortDescription: string;
-    longDescription: string;
+    type: string;
+    description: string;
   }>;
 }
 
 export function* fetchBlogCreateSaga(action: IExtendedAction): SagaIterator {
-  const { title, shortDescription, longDescription } = action.payload;
+  const { title, type, description } = action.payload;
 
-  if (title && shortDescription && longDescription) {
+  if (title && type && description) {
     const response = yield call(fetchBlogCreateApiCall, {
       title,
-      shortDescription,
-      longDescription,
+      type,
+      description,
     });
 
     yield put(setBlogCreateState(response.data));

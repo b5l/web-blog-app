@@ -9,20 +9,20 @@ interface IExtendedAction extends Action {
   payload: Partial<{
     id: number;
     title?: string;
-    shortDescription?: string;
-    longDescription?: string;
+    type?: string;
+    description?: string;
   }>;
 }
 
 export function* fetchBlogEditSaga(action: IExtendedAction): SagaIterator {
-  const { id, title, shortDescription, longDescription } = action.payload;
+  const { id, title, type, description } = action.payload;
 
-  if (id && (title || shortDescription || longDescription)) {
+  if (id && (title || type || description)) {
     const response = yield call(fetchBlogEditApiCall, {
       id,
       title,
-      shortDescription,
-      longDescription,
+      type,
+      description,
     });
 
     yield put(setBlogEditState(response.data));

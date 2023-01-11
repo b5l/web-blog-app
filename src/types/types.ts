@@ -1,12 +1,12 @@
 export type blogPostsType = {
   id: number;
   title: string;
-  shortDescription: string;
+  type: string;
 };
 
 export type blogDetailsType = {
   id: number;
   title: string;
-  shortDescription: string;
-  longDescription: string;
+  type: string;
+  description: string;
 };

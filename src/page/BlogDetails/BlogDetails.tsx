@@ -36,10 +36,10 @@ export const BlogDetails = ({ route, navigation }: Props) => {
           {data?.title}
         </Heading>
         <Heading size="sm" marginBottom="5" textAlign={"justify"}>
-          {data?.shortDescription}
+          {data?.type}
         </Heading>
         <Text fontSize="md" textAlign={"justify"}>
-          {data?.longDescription}
+          {data?.description}
         </Text>
       </Box>
       <Button
