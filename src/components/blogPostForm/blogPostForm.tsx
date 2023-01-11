@@ -30,7 +30,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
     <Box p="5">
       <Text fontWeight={"bold"}>Title</Text>
       <Input
-        value={details?.title}
+        defaultValue={details?.title}
         style={style.boxContainer}
         fontSize={13}
         onChangeText={(value) => setData({ ...formData, title: value })}
@@ -38,7 +38,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
       ></Input>
       <Text fontWeight={"bold"}>Description(short)</Text>
       <TextArea
-        value={details?.shortDescription}
+        defaultValue={details?.shortDescription}
         style={style.boxContainer}
         fontSize={13}
         autoCompleteType={undefined}
@@ -50,7 +50,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
       ></TextArea>
       <Text fontWeight={"bold"}>Description(long)</Text>
       <TextArea
-        value={details?.longDescription}
+        defaultValue={details?.longDescription}
         style={style.boxContainer}
         fontSize={13}
         autoCompleteType={undefined}
