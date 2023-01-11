@@ -17,15 +17,28 @@ interface IExtendedAction extends Action {
 export function* fetchBlogEditSaga(action: IExtendedAction): SagaIterator {
   const { id, title, type, description } = action.payload;
 
-  if (id && (title || type || description)) {
-    const response = yield call(fetchBlogEditApiCall, {
-      id,
-      title,
-      type,
-      description,
-    });
+  try {
+    yield put(setBlogEditState({ isSuccess: false }));
 
-    yield put(setBlogEditState(response.data));
+    if (id && (title || type || description)) {
+      const response = yield call(fetchBlogEditApiCall, {
+        id,
+        title,
+        type,
+        description,
+      });
+
+      yield put(setBlogEditState(response.data));
+      if (response.data.isSuccess === true) {
+        yield put(setBlogEditState({ isSuccess: true }));
+      } else {
+        yield put(setBlogEditState({ isSuccess: false }));
+      }
+    }
+  } catch (error) {
+    yield put(setBlogEditState({ isSuccess: false }));
+  } finally {
+    yield put(setBlogEditState({ isSuccess: false }));
   }
 }
 

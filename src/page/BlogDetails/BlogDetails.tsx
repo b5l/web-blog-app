@@ -45,7 +45,9 @@ export const BlogDetails = ({ route, navigation }: Props) => {
       <Button
         style={style.button}
         size={"lg"}
-        onPress={() => navigation.navigate("Edit", { data: data })}
+        onPress={() => {
+          navigation.navigate("Edit", { edit: true, type: data?.type });
+        }}
       >
         <MaterialCommunityIcons name="pencil" color="white" size={25} />
       </Button>

@@ -5,5 +5,5 @@ export type RootStackParamList = {
   Posts: undefined;
   Details: { id: number };
   Create: undefined;
-  Edit: { data: blogDetailsType | undefined };
+  Edit: { edit: boolean; type: string | undefined };
 };

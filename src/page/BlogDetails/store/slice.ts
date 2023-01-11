@@ -8,7 +8,6 @@ interface ISliceState {
       type: string;
       description: string;
     };
-    isFetching: boolean;
   };
 }
 
@@ -20,7 +19,6 @@ export const initialState: ISliceState = {
       type: "",
       description: "",
     },
-    isFetching: false,
   },
 };
 
@@ -31,7 +29,9 @@ const blogDetailsSlice = createSlice({
     setBlogDetailsState: (state, action) => {
       state.blogDetails.data = { ...state.blogDetails.data, ...action.payload };
     },
-    fetchBlogDetailsAction: (state, action) => {},
+    fetchBlogDetailsAction: (state, action) => {
+      state.blogDetails.data = { ...state.blogDetails.data, ...action.payload };
+    },
   },
 });
 

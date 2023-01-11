@@ -28,6 +28,7 @@ export function* fetchLoginSaga(action: IExtendedAction): SagaIterator {
   } catch (error) {
     yield put(setLoginState({ isAuth: false }));
   } finally {
+    yield put(setLoginState({ isAuth: false }));
   }
 }
 

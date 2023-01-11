@@ -8,6 +8,7 @@ interface ISliceState {
       type?: string;
       description?: string;
     };
+    isSuccess: boolean;
   };
 }
 
@@ -19,6 +20,7 @@ export const initialState: ISliceState = {
       type: "",
       description: "",
     },
+    isSuccess: false,
   },
 };
 
@@ -26,9 +28,11 @@ const blogEditSlice = createSlice({
   name: "blogEdit",
   initialState,
   reducers: {
-    setBlogEditState: (state, action) => {},
+    setBlogEditState: (state, action) => {
+      state.blogEdit = { ...state.blogEdit, ...action.payload };
+    },
     fetchBlogEditAction: (state, action) => {
-      state.blogEdit = { ...action.payload };
+      state.blogEdit = { ...state.blogEdit, ...action.payload };
     },
   },
 });

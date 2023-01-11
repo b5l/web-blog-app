@@ -28,7 +28,7 @@ const loginSlice = createSlice({
       state.login = { ...state.login, ...action.payload };
     },
     fetchLoginAction: (state, action) => {
-      state.login.user = { ...action.payload };
+      state.login = { ...state.login, ...action.payload };
     },
   },
 });
