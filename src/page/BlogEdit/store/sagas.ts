@@ -18,7 +18,7 @@ export function* fetchBlogEditSaga(action: IExtendedAction): SagaIterator {
   const { id, title, type, description } = action.payload;
 
   try {
-    yield put(setBlogEditState({ isSuccess: false }));
+    yield put(setBlogEditState({ isSuccessful: false }));
 
     if (id && (title || type || description)) {
       const response = yield call(fetchBlogEditApiCall, {
@@ -29,16 +29,16 @@ export function* fetchBlogEditSaga(action: IExtendedAction): SagaIterator {
       });
 
       yield put(setBlogEditState(response.data));
-      if (response.data.isSuccess === true) {
-        yield put(setBlogEditState({ isSuccess: true }));
+      if (response.data.isSuccessful === true) {
+        yield put(setBlogEditState({ isSuccessful: true }));
       } else {
         yield put(setBlogEditState({ isSuccess: false }));
       }
     }
   } catch (error) {
-    yield put(setBlogEditState({ isSuccess: false }));
+    yield put(setBlogEditState({ isSuccessful: false }));
   } finally {
-    yield put(setBlogEditState({ isSuccess: false }));
+    yield put(setBlogEditState({ isSuccessful: false, isEditing: false }));
   }
 }
 
