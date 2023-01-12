@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootStackParamList } from "../../components/navigation/navigationParams";
 import { style } from "../../style/global";
 import { blogDetailsType } from "../../types/types";
+import { setBlogEditState } from "../BlogEdit/store/slice";
 import { getBlogDetails } from "./store/selectors";
 import { fetchBlogDetailsAction } from "./store/slice";
 
@@ -46,7 +47,8 @@ export const BlogDetails = ({ route, navigation }: Props) => {
         style={style.button}
         size={"lg"}
         onPress={() => {
-          navigation.navigate("Edit", { edit: true, type: data?.type });
+          dispatch(setBlogEditState({ data: data, isEditing: true }));
+          navigation.navigate("Edit", { edit: true });
         }}
       >
         <MaterialCommunityIcons name="pencil" color="white" size={25} />

@@ -17,32 +17,25 @@ import { style } from "../../style/global";
 import { RootStackParamList } from "../navigation/navigationParams";
 import { getBlogEdit } from "../../page/BlogEdit/store/selectors";
 import { getBlogCreate } from "../../page/BlogCreate/store/selectors";
-import { blogDetailsType } from "../../types/types";
-import { getBlogDetails } from "../../page/BlogDetails/store/selectors";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Create" | "Edit">;
 
 export const BlogPostForm = ({ navigation, route }: Props) => {
-  const edit = route.params?.edit;
-  const type = route.params?.type;
   const dispatch = useDispatch();
   const createData = useSelector(getBlogCreate);
   const editData = useSelector(getBlogEdit);
-  const detailsData = useSelector(getBlogDetails);
 
-  const [data, setData] = useState<blogDetailsType>();
   const [formData, setFormData] = useState<{}>();
   const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
-    if (edit) {
-      setData(detailsData.data);
-      setFormData({ ...formData, id: detailsData.data.id });
+    if (editData.isEditing) {
+      setFormData({ ...formData, id: editData.data.id });
     }
-  }, [detailsData]);
+  }, [editData]);
 
   useEffect(() => {
-    if (createData.isSuccess || editData.isSuccess) {
+    if (createData.isSuccessful || editData.isSuccessful) {
       navigation.navigate("Posts");
       dispatch(fetchBlogPostsAction({}));
       setTimeout(() => {
@@ -57,7 +50,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
 
       <FormControl isRequired isInvalid={errorMessage}>
         <Input
-          defaultValue={data?.title}
+          defaultValue={editData.isEditing ? editData.data?.title : ""}
           style={style.boxContainer}
           fontSize={13}
           onChangeText={(value) => setFormData({ ...formData, title: value })}
@@ -69,7 +62,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
 
       <FormControl isRequired isInvalid={errorMessage}>
         <Select
-          defaultValue={type}
+          defaultValue={editData.isEditing ? editData.data?.type : ""}
           style={style.boxContainer}
           fontSize={13}
           h={"auto"}
@@ -100,7 +93,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
 
       <FormControl isRequired isInvalid={errorMessage}>
         <TextArea
-          defaultValue={data?.description}
+          defaultValue={editData.isEditing ? editData.data?.description : ""}
           style={style.boxContainer}
           fontSize={13}
           autoCompleteType={undefined}
@@ -118,7 +111,7 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
       <Button
         isDisabled={!formData}
         onPress={() => {
-          if (data) {
+          if (editData.isEditing) {
             dispatch(fetchBlogEditAction(formData));
           } else {
             dispatch(fetchBlogCreateAction(formData));

@@ -10,3 +10,10 @@ export type blogDetailsType = {
   type: string;
   description: string;
 };
+
+export type blogEditType = {
+  id: number;
+  title?: string;
+  type?: string;
+  description?: string;
+};

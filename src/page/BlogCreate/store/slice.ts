@@ -7,7 +7,7 @@ interface ISliceState {
       type: string;
       description: string;
     };
-    isSuccess: boolean;
+    isSuccessful: boolean;
   };
 }
 
@@ -18,7 +18,7 @@ export const initialState: ISliceState = {
       type: "",
       description: "",
     },
-    isSuccess: false,
+    isSuccessful: false,
   },
 };
 

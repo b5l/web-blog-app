@@ -16,7 +16,7 @@ interface IExtendedAction extends Action {
 export function* fetchBlogCreateSaga(action: IExtendedAction): SagaIterator {
   const { title, type, description } = action.payload;
   try {
-    yield put(setBlogCreateState({ isSuccess: false }));
+    yield put(setBlogCreateState({ isSuccessful: false }));
 
     if (title || type || description) {
       const response = yield call(fetchBlogCreateApiCall, {
@@ -29,15 +29,15 @@ export function* fetchBlogCreateSaga(action: IExtendedAction): SagaIterator {
 
       yield put(setBlogCreateState(response.data));
       if (response.data.isSuccess === true) {
-        yield put(setBlogCreateState({ isSuccess: true }));
+        yield put(setBlogCreateState({ isSuccessful: true }));
       } else {
-        yield put(setBlogCreateState({ isSuccess: false }));
+        yield put(setBlogCreateState({ isSuccessful: false }));
       }
     }
   } catch (error) {
-    yield put(setBlogCreateState({ isSuccess: false }));
+    yield put(setBlogCreateState({ isSuccessful: false }));
   } finally {
-    yield put(setBlogCreateState({ isSuccess: false }));
+    yield put(setBlogCreateState({ isSuccessful: false }));
   }
 }
 
