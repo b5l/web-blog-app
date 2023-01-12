@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootStackParamList } from "../../components/navigation/navigationParams";
 import { style } from "../../style/global";
 import { blogDetailsType } from "../../types/types";
+import { getBlogDelete } from "../BlogDelete/store/selectors";
+import { fetchBlogDeleteAction } from "../BlogDelete/store/slice";
 import { setBlogEditState } from "../BlogEdit/store/slice";
+import { fetchBlogPostsAction } from "../BlogPosts/store/slice";
 import { getBlogDetails } from "./store/selectors";
 import { fetchBlogDetailsAction } from "./store/slice";
 
@@ -28,11 +31,21 @@ export const BlogDetails = ({ route, navigation }: Props) => {
 
   const [data, setDetailsData] = useState<blogDetailsType>();
 
+  const deleteData = useSelector(getBlogDelete);
+
   useEffect(() => {
     if (detailsData) {
       setDetailsData(detailsData.data);
     }
   }, [detailsData]);
+
+  useEffect(() => {
+    if (deleteData.isDeleted) {
+      dispatch(fetchBlogPostsAction({}));
+      onClose();
+      navigation.navigate("Posts");
+    }
+  }, [deleteData]);
 
   return (
     <>
@@ -83,7 +96,10 @@ export const BlogDetails = ({ route, navigation }: Props) => {
               >
                 No
               </Button>
-              <Button colorScheme="danger" onPress={onClose}>
+              <Button
+                colorScheme="danger"
+                onPress={() => dispatch(fetchBlogDeleteAction({ id: id }))}
+              >
                 Yes
               </Button>
             </Button.Group>

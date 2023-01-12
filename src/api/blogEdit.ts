@@ -1,5 +1,5 @@
 import axios from "./axiosClient";
-import { FETCH_BLOG_EDIT_URL } from "../utils/api-config";
+import { FETCH_BLOG_POST_URL } from "../utils/api-config";
 
 export const fetchBlogEditApiCall = (payload: {
   id: number;
@@ -9,7 +9,7 @@ export const fetchBlogEditApiCall = (payload: {
 }) => {
   const { id, title, type, description } = payload;
   return axios
-    .put(FETCH_BLOG_EDIT_URL(), {
+    .put(FETCH_BLOG_POST_URL(id), {
       id,
       title,
       type,
