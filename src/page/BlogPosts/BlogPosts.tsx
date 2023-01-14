@@ -1,3 +1,4 @@
+import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Box, Button, Fab, FlatList, Pressable, Text } from "native-base";
 import { Heading } from "native-base";
@@ -30,36 +31,38 @@ export const BlogPosts = ({ navigation }: Props) => {
   }, [listData]);
 
   return (
-    <Box style={style.pageContainer}>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => navigation.navigate("Details", { id: item.id })}
-            style={style.boxContainer}
-            borderRadius={8}
-            p="5"
-            m="5"
-          >
-            <Box>
-              <Heading>{item.title}</Heading>
-              <Text textAlign={"justify"}>{item.type}</Text>
-            </Box>
-          </Pressable>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
-      <Button
-        style={style.button}
-        onPress={() => {
-          navigation.navigate("Create");
-          dispatch(setBlogEditState({ isEditing: false }));
-        }}
-        size={"lg"}
-      >
-        <MaterialCommunityIcons name="plus" color="white" size={25} />
-      </Button>
-    </Box>
+    <>
+      <Box style={style.pageContainer}>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => navigation.navigate("Details", { id: item.id })}
+              style={style.boxContainer}
+              borderRadius={8}
+              p="5"
+              m="5"
+            >
+              <Box>
+                <Heading>{item.title}</Heading>
+                <Text textAlign={"justify"}>{item.type}</Text>
+              </Box>
+            </Pressable>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
+        <Button
+          style={style.button}
+          onPress={() => {
+            navigation.navigate("Create");
+            dispatch(setBlogEditState({ isEditing: false }));
+          }}
+          size={"lg"}
+        >
+          <MaterialCommunityIcons name="plus" color="white" size={25} />
+        </Button>
+      </Box>
+    </>
   );
 };
 
