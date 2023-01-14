@@ -1,6 +1,13 @@
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AlertDialog, Box, Button, Heading, Text } from "native-base";
+import {
+  AlertDialog,
+  Box,
+  Button,
+  Heading,
+  ScrollView,
+  Text,
+} from "native-base";
 import { useEffect, useRef, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,17 +57,19 @@ export const BlogDetails = ({ route, navigation }: Props) => {
 
   return (
     <>
-      <Box p="5">
-        <Heading textAlign={"justify"} marginBottom="5">
-          {data?.title}
-        </Heading>
-        <Heading size="sm" marginBottom="5" textAlign={"justify"}>
-          {data?.type}
-        </Heading>
-        <Text fontSize="md" textAlign={"justify"}>
-          {data?.description}
-        </Text>
-      </Box>
+      <ScrollView>
+        <Box p="5">
+          <Heading textAlign={"justify"} marginBottom="5">
+            {data?.title}
+          </Heading>
+          <Heading size="sm" marginBottom="5" textAlign={"justify"}>
+            {data?.type}
+          </Heading>
+          <Text fontSize="md" textAlign={"justify"}>
+            {data?.description}
+          </Text>
+        </Box>
+      </ScrollView>
       <Button
         style={style.reverseButton}
         size={"lg"}

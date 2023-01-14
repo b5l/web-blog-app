@@ -5,6 +5,7 @@ import {
   Button,
   FormControl,
   Input,
+  ScrollView,
   Select,
   Text,
   TextArea,
@@ -47,85 +48,91 @@ export const BlogPostForm = ({ navigation, route }: Props) => {
 
   return (
     <>
-      <Box p="5">
-        <Text fontWeight={"bold"}>Title</Text>
+      <ScrollView>
+        <Box p="5">
+          <Text fontWeight={"bold"}>Title</Text>
 
-        <FormControl isRequired isInvalid={errorMessage}>
-          <Input
-            defaultValue={editData.isEditing ? editData.data?.title : ""}
-            style={style.boxContainer}
-            fontSize={13}
-            onChangeText={(value) => setFormData({ ...formData, title: value })}
-            marginBottom={"5"}
-          ></Input>
-        </FormControl>
+          <FormControl isRequired isInvalid={errorMessage}>
+            <Input
+              defaultValue={editData.isEditing ? editData.data?.title : ""}
+              style={style.boxContainer}
+              fontSize={13}
+              onChangeText={(value) =>
+                setFormData({ ...formData, title: value })
+              }
+              marginBottom={"5"}
+            ></Input>
+          </FormControl>
 
-        <Text fontWeight={"bold"}>Type</Text>
+          <Text fontWeight={"bold"}>Type</Text>
 
-        <FormControl isRequired isInvalid={errorMessage}>
-          <Select
-            defaultValue={editData.isEditing ? editData.data?.type : ""}
-            style={style.boxContainer}
-            fontSize={13}
-            h={"auto"}
-            onValueChange={(value) => {
-              setFormData({ ...formData, type: value });
+          <FormControl isRequired isInvalid={errorMessage}>
+            <Select
+              defaultValue={editData.isEditing ? editData.data?.type : ""}
+              style={style.boxContainer}
+              fontSize={13}
+              h={"auto"}
+              onValueChange={(value) => {
+                setFormData({ ...formData, type: value });
+              }}
+              marginBottom={"5"}
+            >
+              <Select.Item label="UX Research" value="UX Research" />
+              <Select.Item label="Web Development" value="Web Development" />
+              <Select.Item
+                label="Cross Platform Development"
+                value="Cross Platform Development"
+              />
+              <Select.Item label="UI Designing" value="UI Designing" />
+              <Select.Item
+                label="Frontend Development"
+                value="Frontend Development"
+              />
+              <Select.Item
+                label="Backend Development"
+                value="Backend Development"
+              />
+            </Select>
+          </FormControl>
+
+          <Text fontWeight={"bold"}>Description</Text>
+
+          <FormControl isRequired isInvalid={errorMessage}>
+            <TextArea
+              defaultValue={
+                editData.isEditing ? editData.data?.description : ""
+              }
+              style={style.boxContainer}
+              fontSize={13}
+              autoCompleteType={undefined}
+              h={"auto"}
+              onChangeText={(value) =>
+                setFormData({ ...formData, description: value })
+              }
+              marginBottom={"5"}
+            ></TextArea>
+            <FormControl.ErrorMessage alignItems="center" marginBottom={"5"}>
+              Failed! Try again!
+            </FormControl.ErrorMessage>
+          </FormControl>
+
+          <Button
+            isDisabled={!formData}
+            onPress={() => {
+              if (editData.isEditing) {
+                dispatch(fetchBlogEditAction(formData));
+              } else {
+                dispatch(fetchBlogCreateAction(formData));
+              }
+              setTimeout(() => {
+                setErrorMessage(true);
+              }, 400);
             }}
-            marginBottom={"5"}
           >
-            <Select.Item label="UX Research" value="UX Research" />
-            <Select.Item label="Web Development" value="Web Development" />
-            <Select.Item
-              label="Cross Platform Development"
-              value="Cross Platform Development"
-            />
-            <Select.Item label="UI Designing" value="UI Designing" />
-            <Select.Item
-              label="Frontend Development"
-              value="Frontend Development"
-            />
-            <Select.Item
-              label="Backend Development"
-              value="Backend Development"
-            />
-          </Select>
-        </FormControl>
-
-        <Text fontWeight={"bold"}>Description</Text>
-
-        <FormControl isRequired isInvalid={errorMessage}>
-          <TextArea
-            defaultValue={editData.isEditing ? editData.data?.description : ""}
-            style={style.boxContainer}
-            fontSize={13}
-            autoCompleteType={undefined}
-            h={"auto"}
-            onChangeText={(value) =>
-              setFormData({ ...formData, description: value })
-            }
-            marginBottom={"5"}
-          ></TextArea>
-          <FormControl.ErrorMessage alignItems="center" marginBottom={"5"}>
-            Failed! Try again!
-          </FormControl.ErrorMessage>
-        </FormControl>
-
-        <Button
-          isDisabled={!formData}
-          onPress={() => {
-            if (editData.isEditing) {
-              dispatch(fetchBlogEditAction(formData));
-            } else {
-              dispatch(fetchBlogCreateAction(formData));
-            }
-            setTimeout(() => {
-              setErrorMessage(true);
-            }, 400);
-          }}
-        >
-          Save
-        </Button>
-      </Box>
+            Save
+          </Button>
+        </Box>
+      </ScrollView>
     </>
   );
 };

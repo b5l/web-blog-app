@@ -1,5 +1,3 @@
-import { blogDetailsType } from "../../types/types";
-
 export type RootStackParamList = {
   Login: undefined;
   Posts: undefined;

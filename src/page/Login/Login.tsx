@@ -6,8 +6,8 @@ import {
   Stack,
   Button,
   Text,
-  Spacer,
   Input,
+  Link,
 } from "native-base";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,11 +69,11 @@ export const LoginPage = ({ navigation }: Props) => {
               Login Failed! Try again!
             </FormControl.ErrorMessage>
           </FormControl>
-          <Spacer />
           <Button
             colorScheme="primary"
             shadow={10}
             style={loginStyle.loginButton}
+            mt={"6"}
             onPress={() => {
               dispatch(fetchLoginAction(formData));
               setTimeout(() => {
@@ -83,6 +83,7 @@ export const LoginPage = ({ navigation }: Props) => {
           >
             Login
           </Button>
+          <Link mt={"0.5"}>Sign up</Link>
         </Box>
       </Box>
     </>
