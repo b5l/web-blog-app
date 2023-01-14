@@ -12,6 +12,13 @@ export const style = StyleSheet.create({
     margin: 30,
     borderRadius: 50,
   },
+  reverseButton: {
+    position: "absolute",
+    left: 0,
+    bottom: 0,
+    margin: 30,
+    borderRadius: 50,
+  },
   boxContainer: {
     overflow: "hidden",
     borderWidth: 1,

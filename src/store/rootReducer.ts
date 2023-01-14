@@ -4,6 +4,7 @@ import blogPostsReducer from "../page/BlogPosts/store/slice";
 import blogDetailsReducer from "../page/BlogDetails/store/slice";
 import blogCreateReducer from "../page/BlogCreate/store/slice";
 import blogEditReducer from "../page/BlogEdit/store/slice";
+import blogDeleteReducer from "../page/BlogDelete/store/slice";
 
 const createRootReducer = () =>
   combineReducers({
@@ -12,6 +13,7 @@ const createRootReducer = () =>
     blogDetails: blogDetailsReducer,
     blogCreate: blogCreateReducer,
     blogEdit: blogEditReducer,
+    blogDelete: blogDeleteReducer,
   });
 
 export default createRootReducer;

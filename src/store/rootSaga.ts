@@ -5,6 +5,7 @@ import { watchBlogPostsSaga } from "../page/BlogPosts/store/sagas";
 import { watchBlogDetailsSaga } from "../page/BlogDetails/store/sagas";
 import { watchBlogCreateSaga } from "../page/BlogCreate/store/sagas";
 import { watchBlogEditSaga } from "../page/BlogEdit/store/sagas";
+import { watchBlogDeleteSaga } from "../page/BlogDelete/store/sagas";
 
 export default function* rootSaga(): SagaIterator {
   yield all([fork(watchLoginSaga)]);
@@ -12,4 +13,5 @@ export default function* rootSaga(): SagaIterator {
   yield all([fork(watchBlogDetailsSaga)]);
   yield all([fork(watchBlogCreateSaga)]);
   yield all([fork(watchBlogEditSaga)]);
+  yield all([fork(watchBlogDeleteSaga)]);
 }
