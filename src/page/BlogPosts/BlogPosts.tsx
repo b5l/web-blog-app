@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Box, Button, Fab, FlatList, Pressable, Text } from "native-base";
+import {
+  AlertDialog,
+  Box,
+  Button,
+  FlatList,
+  Pressable,
+  Text,
+} from "native-base";
 import { Heading } from "native-base";
 import { useEffect, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -19,6 +26,10 @@ export const BlogPosts = ({ navigation }: Props) => {
   const listData = useSelector(getBlogPosts);
 
   const [data, setListData] = useState<blogPostsType[] | null>(null);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const onClose = () => setIsOpen(false);
+  const cancelRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchBlogPostsAction({}));
@@ -52,7 +63,7 @@ export const BlogPosts = ({ navigation }: Props) => {
           keyExtractor={(item) => item.id.toString()}
         />
         <Button
-          style={style.button}
+          style={style.reverseButton}
           onPress={() => {
             navigation.navigate("Create");
             dispatch(setBlogEditState({ isEditing: false }));
@@ -61,6 +72,45 @@ export const BlogPosts = ({ navigation }: Props) => {
         >
           <MaterialCommunityIcons name="plus" color="white" size={25} />
         </Button>
+        <Button
+          colorScheme="danger"
+          style={style.button}
+          onPress={() => setIsOpen(!isOpen)}
+          size={"lg"}
+        >
+          <MaterialCommunityIcons name="logout" color="white" size={25} />
+        </Button>
+        <AlertDialog
+          leastDestructiveRef={cancelRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <AlertDialog.Content>
+            <AlertDialog.CloseButton />
+            <AlertDialog.Header>Logout</AlertDialog.Header>
+            <AlertDialog.Body>Are you sure?</AlertDialog.Body>
+            <AlertDialog.Footer>
+              <Button.Group space={2}>
+                <Button
+                  variant="unstyled"
+                  colorScheme="coolGray"
+                  onPress={onClose}
+                  ref={cancelRef}
+                >
+                  No
+                </Button>
+                <Button
+                  colorScheme="danger"
+                  onPress={() => {
+                    navigation.navigate("Login");
+                  }}
+                >
+                  Yes
+                </Button>
+              </Button.Group>
+            </AlertDialog.Footer>
+          </AlertDialog.Content>
+        </AlertDialog>
       </Box>
     </>
   );

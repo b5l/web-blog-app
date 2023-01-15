@@ -5,12 +5,14 @@ export const loginStyle = StyleSheet.create({
     flex: 1,
     backgroundColor: "#B65EFF",
     justifyContent: "center",
+    alignItems: "center",
   },
+  //Todo name
   inputContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    minWidth: "80%",
+    width: "85%",
     minHeight: "30%",
     padding: 15,
     backgroundColor: "white",

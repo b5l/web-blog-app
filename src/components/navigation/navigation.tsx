@@ -7,6 +7,7 @@ import LoginPage from "../../page/Login/Login";
 import { RootStackParamList } from "./navigationParams";
 import BlogEdit from "../../page/BlogEdit/BlogEdit";
 import BlogCreate from "../../page/BlogCreate/BlogCreate";
+import { SignUp } from "../../page/SignUp/SignUp";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,6 +22,11 @@ export const Navigation = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="Posts"
             component={BlogPosts}
             options={{
@@ -29,8 +35,7 @@ export const Navigation = () => {
                 backgroundColor: "#B65EFF",
               },
               headerTintColor: "#fff",
-              // headerBackVisible: false,
-              headerBackTitle: "Log out",
+              headerBackVisible: false,
             }}
           />
           <Stack.Screen
