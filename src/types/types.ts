@@ -1,3 +1,8 @@
+export type loginSignUpType = {
+  username?: string;
+  password?: string;
+};
+
 export type blogPostsType = {
   id: number;
   title: string;
