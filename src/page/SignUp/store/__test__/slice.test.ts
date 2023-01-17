@@ -1,4 +1,4 @@
-import { SignUpMock } from "../../../../mocks/mockData";
+import { SignUpLoginMock } from "../../../../mocks/mockData";
 import reducer, {
   fetchSignUpAction,
   initialState,
@@ -27,7 +27,7 @@ describe("Sign Up - slices", () => {
       reducer(
         initialState,
         setSignUpState({
-          user: SignUpMock,
+          user: SignUpLoginMock,
           isSuccessful: true,
           userTaken: false,
         })
@@ -35,7 +35,7 @@ describe("Sign Up - slices", () => {
     ).toEqual({
       ...initialState,
       signUp: {
-        user: SignUpMock,
+        user: SignUpLoginMock,
         userTaken: false,
         isSuccessful: true,
       },
