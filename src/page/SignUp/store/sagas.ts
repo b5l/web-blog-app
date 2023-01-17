@@ -19,17 +19,7 @@ export function* fetchSignUpSaga(action: IExtendedAction): SagaIterator {
     if (username && password) {
       const response = yield call(fetchSignUpApiCall, { username, password });
 
-      if (response.data.isSuccessful === true) {
-        yield put(setSignUpState({ isSuccessful: true }));
-      } else {
-        yield put(setSignUpState({ isSuccessful: false }));
-      }
-
-      if (response.data.userTaken === true) {
-        yield put(setSignUpState({ userTaken: true }));
-      } else {
-        yield put(setSignUpState({ userTaken: false }));
-      }
+      yield put(setSignUpState(response.data));
     }
   } catch (error) {
     yield put(setSignUpState({ isSuccessful: false, userTaken: false }));

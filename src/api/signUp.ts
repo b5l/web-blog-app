@@ -8,7 +8,6 @@ export const fetchSignUpApiCall = (payload: {
   const { username, password } = payload;
   return axios
     .post(FETCH_SIGN_UP_URL(), { username, password })
-    .then()
     .catch((error) => {
       return error;
     });
