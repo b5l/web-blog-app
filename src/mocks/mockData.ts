@@ -30,3 +30,10 @@ export const BlogPostsMock = [
     type: "Test Type 5",
   },
 ];
+
+export const BlogEditMock = {
+  id: 1,
+  title: "Test Title 1",
+  type: "Test Type 1",
+  description: "Test desc",
+};

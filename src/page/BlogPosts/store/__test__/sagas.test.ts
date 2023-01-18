@@ -11,8 +11,8 @@ jest.mock("axios");
 
 const mockfetchBlogPostsApiCall = fetchBlogPostsApiCall as jest.Mock;
 
-describe("BlogPosts - sagas", () => {
-  test("should successfully fetch Blog posts data", () => {
+describe("Blog Posts - sagas", () => {
+  test("should successfully fetch Blog Posts data", () => {
     mockfetchBlogPostsApiCall.mockResolvedValue({ BlogPostsMock });
 
     const action = {

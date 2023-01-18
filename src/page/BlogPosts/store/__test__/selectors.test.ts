@@ -2,8 +2,8 @@ import { getBlogPosts } from "../selectors";
 import { initialState } from "../slice";
 import { BlogPostsMock } from "../../../../mocks/mockData";
 
-describe("Login - selectors", () => {
-  test("getLogin selector", () => {
+describe("Blog Posts - selectors", () => {
+  test("getBlogPosts selector", () => {
     const blogsPostsData = getBlogPosts.resultFunc({
       ...initialState,
       blogPosts: { data: BlogPostsMock },

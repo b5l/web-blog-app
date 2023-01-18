@@ -5,8 +5,8 @@ import reducer, {
   setBlogPostsState,
 } from "../slice";
 
-describe("Blog posts - slices", () => {
-  it("should fetch blog posts data", () => {
+describe("Blog Posts - slices", () => {
+  it("should fetch Blog Posts data", () => {
     expect(reducer(initialState, fetchBlogPostsAction({}))).toEqual({
       ...initialState,
       blogPosts: {

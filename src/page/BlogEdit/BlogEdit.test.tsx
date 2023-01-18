@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { NativeBaseProvider } from "native-base";
 import renderer from "react-test-renderer";
 import { store } from "../../store";
-import SignUp from "./SignUp";
+import BlogEdit from "./BlogEdit";
 
 const createTestProps = (props: Object) => ({
   navigation: {
@@ -12,7 +12,7 @@ const createTestProps = (props: Object) => ({
   ...props,
 });
 
-describe("Sign Up page", () => {
+describe("Blog edit page", () => {
   let props: any;
   beforeEach(() => {
     props = createTestProps({});
@@ -22,7 +22,7 @@ describe("Sign Up page", () => {
       .create(
         <Provider store={store}>
           <NativeBaseProvider>
-            <SignUp {...props} />
+            <BlogEdit {...props} />
           </NativeBaseProvider>
         </Provider>
       )

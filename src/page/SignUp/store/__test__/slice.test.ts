@@ -6,7 +6,7 @@ import reducer, {
 } from "../slice";
 
 describe("Sign Up - slices", () => {
-  it("should fetch sign up data", () => {
+  it("should fetch Sign Up data", () => {
     expect(reducer(initialState, fetchSignUpAction({}))).toEqual({
       ...initialState,
       signUp: {

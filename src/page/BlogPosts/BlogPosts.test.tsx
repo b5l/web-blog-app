@@ -17,7 +17,7 @@ const createTestProps = (props: Object) => ({
   ...props,
 });
 
-describe("BlogPosts page", () => {
+describe("Blog Posts page", () => {
   let props: any;
   beforeEach(() => {
     props = createTestProps({});
