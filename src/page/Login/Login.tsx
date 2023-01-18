@@ -37,64 +37,62 @@ export const LoginPage = ({ navigation }: Props) => {
   }, [auth]);
 
   return (
-    <>
-      <Box style={loginStyle.container}>
-        <Text fontSize="4xl" style={loginStyle.loginText}>
+    <Box style={loginStyle.container}>
+      <Text fontSize="4xl" style={loginStyle.loginText}>
+        Login
+      </Text>
+      <Box style={loginStyle.inputContainer} m="15">
+        <FormControl isRequired isInvalid={errorMessage}>
+          <Stack mx="10" mb="2">
+            <FormControl.Label>Username</FormControl.Label>
+            <Input
+              type="text"
+              placeholder="username"
+              onChangeText={(value) =>
+                setData({ ...formData, username: value })
+              }
+            />
+          </Stack>
+        </FormControl>
+        <FormControl isRequired isInvalid={errorMessage}>
+          <Stack mx="10">
+            <FormControl.Label>Password</FormControl.Label>
+            <Input
+              type="password"
+              placeholder="password"
+              onChangeText={(value) =>
+                setData({ ...formData, password: value })
+              }
+            />
+          </Stack>
+          <FormControl.ErrorMessage alignItems="center">
+            Login Failed! Try again!
+          </FormControl.ErrorMessage>
+        </FormControl>
+        <Button
+          colorScheme="primary"
+          shadow={10}
+          style={loginStyle.loginButton}
+          mt={"6"}
+          onPress={() => {
+            dispatch(fetchLoginAction(formData));
+            setTimeout(() => {
+              setErrorMessage(true);
+            }, 400);
+          }}
+        >
           Login
-        </Text>
-        <Box style={loginStyle.inputContainer} m="15">
-          <FormControl isRequired isInvalid={errorMessage}>
-            <Stack mx="10" mb="2">
-              <FormControl.Label>Username</FormControl.Label>
-              <Input
-                type="text"
-                placeholder="username"
-                onChangeText={(value) =>
-                  setData({ ...formData, username: value })
-                }
-              />
-            </Stack>
-          </FormControl>
-          <FormControl isRequired isInvalid={errorMessage}>
-            <Stack mx="10">
-              <FormControl.Label>Password</FormControl.Label>
-              <Input
-                type="password"
-                placeholder="password"
-                onChangeText={(value) =>
-                  setData({ ...formData, password: value })
-                }
-              />
-            </Stack>
-            <FormControl.ErrorMessage alignItems="center">
-              Login Failed! Try again!
-            </FormControl.ErrorMessage>
-          </FormControl>
-          <Button
-            colorScheme="primary"
-            shadow={10}
-            style={loginStyle.loginButton}
-            mt={"6"}
-            onPress={() => {
-              dispatch(fetchLoginAction(formData));
-              setTimeout(() => {
-                setErrorMessage(true);
-              }, 400);
-            }}
-          >
-            Login
-          </Button>
-          <Link
-            mt={"0.5"}
-            onPress={() => {
-              navigation.navigate("SignUp");
-            }}
-          >
-            Sign up
-          </Link>
-        </Box>
+        </Button>
+        <Link
+          mt={"0.5"}
+          onPress={() => {
+            navigation.navigate("SignUp");
+          }}
+        >
+          Sign up
+        </Link>
       </Box>
-    </>
+    </Box>
   );
 };
 
