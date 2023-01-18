@@ -26,13 +26,6 @@ export function* fetchBlogCreateSaga(action: IExtendedAction): SagaIterator {
       });
 
       yield put(setBlogCreateState(response.data));
-
-      yield put(setBlogCreateState(response.data));
-      if (response.data.isSuccess === true) {
-        yield put(setBlogCreateState({ isSuccessful: true }));
-      } else {
-        yield put(setBlogCreateState({ isSuccessful: false }));
-      }
     }
   } catch (error) {
     yield put(setBlogCreateState({ isSuccessful: false }));
