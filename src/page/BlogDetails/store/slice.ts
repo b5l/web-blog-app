@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { blogDetailsType } from "../../../types/types";
 
 interface ISliceState {
   blogDetails: {
-    data: {
-      id: number;
-      title: string;
-      type: string;
-      description: string;
-    };
+    data: blogDetailsType;
   };
 }
 

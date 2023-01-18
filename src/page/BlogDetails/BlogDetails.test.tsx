@@ -2,7 +2,12 @@ import { Provider } from "react-redux";
 import { NativeBaseProvider } from "native-base";
 import renderer from "react-test-renderer";
 import { store } from "../../store";
-import BlogEdit from "./BlogEdit";
+import BlogDetails from "./BlogDetails";
+
+jest.mock(
+  "react-native-vector-icons/MaterialCommunityIcons",
+  () => "MaterialCommunityIcons"
+);
 
 const createTestProps = (props: Object) => ({
   navigation: {
@@ -12,7 +17,7 @@ const createTestProps = (props: Object) => ({
   ...props,
 });
 
-describe("Blog Edit page", () => {
+describe("Blog Details page", () => {
   let props: any;
   beforeEach(() => {
     props = createTestProps({});
@@ -22,7 +27,7 @@ describe("Blog Edit page", () => {
       .create(
         <Provider store={store}>
           <NativeBaseProvider>
-            <BlogEdit {...props} />
+            <BlogDetails {...props} />
           </NativeBaseProvider>
         </Provider>
       )
