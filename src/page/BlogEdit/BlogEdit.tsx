@@ -9,11 +9,9 @@ type Props = NativeStackScreenProps<RootStackParamList, "Edit">;
 
 export const BlogEdit = ({ navigation, route }: Props) => {
   return (
-    <>
-      <Box>
-        <BlogPostForm navigation={navigation} route={route} />
-      </Box>
-    </>
+    <Box>
+      <BlogPostForm navigation={navigation} route={route} />
+    </Box>
   );
 };
 

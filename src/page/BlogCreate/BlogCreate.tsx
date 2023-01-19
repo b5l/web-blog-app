@@ -9,11 +9,9 @@ type Props = NativeStackScreenProps<RootStackParamList, "Create">;
 
 export const BlogCreate = ({ navigation, route }: Props) => {
   return (
-    <>
-      <Box>
-        <BlogPostForm navigation={navigation} route={route} />
-      </Box>
-    </>
+    <Box>
+      <BlogPostForm navigation={navigation} route={route} />
+    </Box>
   );
 };
 
