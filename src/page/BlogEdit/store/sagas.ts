@@ -29,11 +29,6 @@ export function* fetchBlogEditSaga(action: IExtendedAction): SagaIterator {
       });
 
       yield put(setBlogEditState(response.data));
-      if (response.data.isSuccessful === true) {
-        yield put(setBlogEditState({ isSuccessful: true }));
-      } else {
-        yield put(setBlogEditState({ isSuccess: false }));
-      }
     }
   } catch (error) {
     yield put(setBlogEditState({ isSuccessful: false }));

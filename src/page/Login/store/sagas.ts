@@ -19,11 +19,7 @@ export function* fetchLoginSaga(action: IExtendedAction): SagaIterator {
     if (username && password) {
       const response = yield call(fetchLoginApiCall, { username, password });
 
-      if (response.data.isAuth === true) {
-        yield put(setLoginState({ isAuth: true }));
-      } else {
-        yield put(setLoginState({ isAuth: false }));
-      }
+      yield put(setLoginState(response.data));
     }
   } catch (error) {
     yield put(setLoginState({ isAuth: false }));

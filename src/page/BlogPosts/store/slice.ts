@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { blogPostsType } from "../../../types/types";
 
 interface ISliceState {
   blogPosts: {
-    data: [];
-    isFetching: boolean;
+    data: blogPostsType[];
   };
 }
 
 export const initialState: ISliceState = {
   blogPosts: {
     data: [],
-    isFetching: false,
   },
 };
 
